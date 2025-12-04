@@ -63,6 +63,38 @@ typedef struct {
 } tablets;
 
 // 'typedef' keeps the code clean when structs are nested inside other structs
+// define three structs with typedef
+typedef struct {
+  char personFirst[20];
+  char personLast[20];
+} Obtainer;
+
+typedef struct {
+  char manufacturer[20];
+  int year;
+  Obtainer owner;
+} Automobile;
+
+typedef struct {
+  char name[30];
+  Automobile featuredCar;
+} Dealership;
+
+// after creation of a struct the compiler may add some extra 'bytes of padding' between members
+// this makes the program run faster because most CPUs read data more efficiently when its properly aligned in memory
+struct Example {
+  char a; // 1 byte
+  int b;  // 4 bytes
+  char c; // 1 byte
+};
+
+// padding depends of the order of members in the struct
+// if larger types are grouped first, the struct will become smaller
+struct addExample {
+  int b;  // 4 bytes
+  char a; // 1 byte
+  char c; // 1 byte
+};
 
 int main() {
 
@@ -178,6 +210,24 @@ int main() {
   printf("%s %s %d\n", tablet1.brand, tablet1.model, tablet1.year);
   printf("%s %s %d\n", tablet2.brand, tablet2.model, tablet3.year);
   printf("%s %s %d\n", tablet3.brand, tablet3.model, tablet3.year);
+
+  // declare the values of the three structs
+  Obtainer person1 = {"John", "Doe"};
+  Automobile car4 = {"Mercedes", 2012, person1};
+  Dealership d = {"City Motors", car4};
+
+  // print the multiple nested structs
+  printf("Dealership: %s\n", d.name);
+  printf("Featured Car: %s (%d), owned by %s %s\n", d.featuredCar.manufacturer,
+         d.featuredCar.year, d.featuredCar.owner.personFirst,
+         d.featuredCar.owner.personLast);
+
+  // print the size of the different variables of the struct
+  // the output will be 12 bytes because the compiler adds padding bytes!
+  printf("Size of struct: %zu bytes\n", sizeof(struct Example));
+
+  // call the reordered variables of the struct 'addExample'
+  printf("Size of struct: %zu bytes\n", sizeof(struct addExample));
 
   // continue with c:typedef
 
