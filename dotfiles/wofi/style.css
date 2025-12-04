@@ -1,0 +1,53 @@
+@import url("/home/unknown/.config/colors/catppuccin-mocha-gtk.css");
+
+window	{
+	background-color: @ctp-base;
+	border: 2px solid @ctp-mauve;
+	border-radius: 12px;
+	padding: 10px;
+}
+
+#outer-box	{
+	background-color: @ctp-base;
+	padding: 6px;
+}
+
+#inner-box	{
+	background-color: @ctp-base;
+}
+
+#input	{
+	background-color: @ctp-surface0;
+	color: @ctp-text;
+	border-radius: 8px;
+	padding: 6px 8px;
+	margin-bottom: 6px;
+	font-family: "JetBrainsMono Nerd Font", monospace;
+	font-size: 12px;
+}
+
+#scroll	{
+	margin-top: 4px;
+}
+
+#entry	{
+	background-color: @ctp-base;
+	color: @ctp-text;
+	padding: 4px 6px;
+	border-radius: 6px;
+}
+
+#entry:selected	{
+	background-color: @ctp-surface1;
+	color: @ctp-rosewater;
+}
+
+#text	{
+	color: @ctp-text;
+	font-family: "JetBrainsMono Nerd Font", monospace;
+	font-size: 12px;
+}
+
+#text:selected	{
+	color: @ctp-rosewater;
+}
