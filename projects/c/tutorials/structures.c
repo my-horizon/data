@@ -1,9 +1,9 @@
+#include <stdio.h>
+#include <string.h>
+
 // structures are a way to group several related variables into one place
 // each variable in the structure is known as a member of the structure
 // unlike an array, a structure can contain many different data types (int, float, char, etc.)
-
-#include <stdio.h>
-#include <string.h>
 
 // create a structure by using the 'struct' keyword, declare every item inside curly braces
 struct myStructure { // structure declaration
@@ -51,6 +51,18 @@ union myUnion {
   char myLetter;
   char myString[40];
 };
+
+// the 'typedef' keyword can create a new name (an alias) for an existing type (makes complex declarations easier to read)
+typedef float Temperature;
+
+// this example shows how 'typedef' makes it easier to work with multiple struct variables, like different tablet brands
+typedef struct {
+  char brand[30];
+  char model[30];
+  int year;
+} tablets;
+
+// 'typedef' keeps the code clean when structs are nested inside other structs
 
 int main() {
 
@@ -149,6 +161,23 @@ int main() {
   // the size of a union will always be the same as the size of its largest member
   printf("Size of union: %zu bytes\n",
          sizeof(u1)); // will print '40' because of 'char myString[40]'!
+
+  // the 'Temperature' is just another name for 'float', but makes the code more expressive
+  Temperature today = 10.2;
+  Temperature tomorrow = 8.7; // typedef simplifies code and improves clarity
+
+  // '%.1f' just shows the declared floating numbers (the zeros will not be shown)
+  printf("Today: %.1f C\n", today);
+  printf("Tomorrow: %.1f C\n", tomorrow);
+
+  // declare the values of the tablets
+  tablets tablet1 = {"Samsung", "Galaxy", 2020};
+  tablets tablet2 = {"Apple", "iPad", 2021};
+  tablets tablet3 = {"Google", "PixelTab", 2023};
+
+  printf("%s %s %d\n", tablet1.brand, tablet1.model, tablet1.year);
+  printf("%s %s %d\n", tablet2.brand, tablet2.model, tablet3.year);
+  printf("%s %s %d\n", tablet3.brand, tablet3.model, tablet3.year);
 
   // continue with c:typedef
 
