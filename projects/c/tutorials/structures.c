@@ -31,6 +31,27 @@ struct Motorcycle {
   struct Owner owner; // nested structure
 };
 
+// pointers with structs can be used to make the code more efficient, especially when passing structs to functions or changing their values
+// to use a pointer on a struct, add the '*' symbol, like for other data types
+// to access its members, use the '->' operator instead of the '.' syntax
+struct Phone {
+  char brand[40];
+  int year;
+};
+
+// a struct pointer can be passed to a function and change its values, it saves code and makes the program faster
+void updateYear(struct Phone *c) {
+  c->year = 2025; // change the year
+}
+
+// a union is similar to a struct in that it can store members of different data types, but all use the same memory
+// to create a union, use the 'union' keyword and create a variable from it
+union myUnion {
+  int myNum;
+  char myLetter;
+  char myString[40];
+};
+
 int main() {
 
   // to access the structure create a variable of it in the 'main()' function
@@ -96,7 +117,40 @@ int main() {
   printf("Bike: %s (%d)\n", bike1.brand, bike1.year);
   printf("Owner: %s %s\n", bike1.owner.firstName, bike1.owner.lastName);
 
-  // continue with c:nested structures
+  // declare the values of the 'Phone' structure
+  struct Phone phone = {"Google", 2020};
+
+  // declare a pointer to the struct
+  struct Phone *ptr = &phone;
+
+  // access members using the '->' operator
+  printf("Brand: %s\n", ptr->brand);
+  printf("Year: %d\n", ptr->year);
+
+  // call the 'updateYear' void function
+  updateYear(&phone); // pass a pointer so the function can change the year
+  // prevents from creating a new structure with updated values
+
+  printf("Brand: %s\n", phone.brand);
+  printf("Year: %d\n", phone.year);
+
+  // create a union variable with the name 'u1'
+  union myUnion u1;
+
+  // to access its members, use the '.' syntax like with structs
+  u1.myNum = 1000;
+
+  // since this is the last value written to the union, myNum no longer holds '1000' - its value is now 'A'
+  u1.myLetter = 'A';
+
+  printf("myNum: %d\n", u1.myNum);       // this value is no longer reliable
+  printf("myLetter: %c\n", u1.myLetter); // prints 'A'
+
+  // the size of a union will always be the same as the size of its largest member
+  printf("Size of union: %zu bytes\n",
+         sizeof(u1)); // will print '40' because of 'char myString[40]'!
+
+  // continue with c:typedef
 
   return 0;
 }
