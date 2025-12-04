@@ -2,13 +2,14 @@
 // each variable in the structure is known as a member of the structure
 // unlike an array, a structure can contain many different data types (int, float, char, etc.)
 
-// create a structure by using the 'struct' keyword, declare every item inside curly braces
 #include <stdio.h>
 #include <string.h>
+
+// create a structure by using the 'struct' keyword, declare every item inside curly braces
 struct myStructure { // structure declaration
   int myNum;         //member (int variable)
   char myLetter;     //member (char variable)
-  char myString[30]; //member (string variable)
+  char myString[50]; //member (string variable)
 }; // end structure with semicolon
 
 // real life example (useful when storing different information)
@@ -16,6 +17,18 @@ struct Car {
   char brand[30];
   char model[30];
   int year;
+};
+
+// a structure can also contain another structure as a member, this is called a nested structure
+struct Owner {
+  char firstName[30];
+  char lastName[30];
+};
+
+struct Motorcycle {
+  char brand[30];
+  int year;
+  struct Owner owner; // nested structure
 };
 
 int main() {
@@ -74,6 +87,14 @@ int main() {
   printf("%s %s %d\n", car1.brand, car1.model, car1.year);
   printf("%s %s %d\n", car2.brand, car2.model, car2.year);
   printf("%s %s %d\n", car3.brand, car3.model, car3.year);
+
+  // declare the 'firstName' and 'lastName' variables
+  struct Owner person = {"John", "Doe"};
+  struct Motorcycle bike1 = {"KTM", 2014, person};
+
+  //print the nested structure
+  printf("Bike: %s (%d)\n", bike1.brand, bike1.year);
+  printf("Owner: %s %s\n", bike1.owner.firstName, bike1.owner.lastName);
 
   // continue with c:nested structures
 
