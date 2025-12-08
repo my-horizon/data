@@ -387,8 +387,6 @@ int main() {
     printf("%d ", numbers[f]);
   }
 
-  // Continue with C Functions Callback Functions
-
   return 0;
 }
 

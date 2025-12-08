@@ -1146,7 +1146,5 @@ int main() {
   printf("%d\n", *randomNumbers);
   printf("%d\n", *(randomNumbers + 1));
 
-  // The end of C Tutorial!
-
   return 0;
 }
