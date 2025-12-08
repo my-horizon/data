@@ -229,7 +229,5 @@ int main() {
   // call the reordered variables of the struct 'addExample'
   printf("Size of struct: %zu bytes\n", sizeof(struct addExample));
 
-  // continue with c:typedef
-
   return 0;
 }
