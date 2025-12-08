@@ -18,6 +18,5 @@
 		})
 		vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Toggle file explorer" })
 		vim.keymap.set("n", "<leader>s", ":NvimTreeFocus<CR>", { desc = "Focus file explorer" })
-		vim.keymap.set("n", "<leader>p", "<C-w>p", { desc = "Go to previous window" })
 	end,
 }
