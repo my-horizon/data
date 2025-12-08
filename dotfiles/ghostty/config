@@ -1,12 +1,16 @@
 # Theme
 theme = catppuccin-mocha
 
-#	Font
+# Font
 font-family = "JetBrainsMono Nerd Font"
 font-size = 12
 
-#	Cursor Style
+# Cursor Style
 cursor-style = block
 
-#	Opacity
+# Opacity
 background-opacity = 0.7
+
+# Padding
+window-padding-x = 10
+window-padding-y = 10
