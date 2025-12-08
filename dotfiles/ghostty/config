@@ -9,7 +9,7 @@ font-size = 12
 cursor-style = block
 
 # Opacity
-background-opacity = 0.7
+background-opacity = 1.0
 
 # Padding
 window-padding-x = 10
