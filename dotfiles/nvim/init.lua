@@ -16,6 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 vim.opt.number = true
+vim.opt.scrolloff = 999
 require("lazy").setup({
 	spec = {
 		{ import = "plugins" },
@@ -26,5 +27,17 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = "*",
 	callback = function()
 		vim.opt_local.formatoptions:remove({ "c", "r", "o" })
+	end,
+})
+vim.api.nvim_create_autocmd("CursorMoved", {
+	pattern = "*",
+	callback = function()
+		local cursor_line = vim.fn.line(".")
+		local last_line = vim.fn.line("$")
+		local win_height = vim.fn.winheight(0)
+
+		if last_line > win_height / 2 and cursor_line > win_height / 2 then
+			vim.cmd("normal! zz")
+		end
 	end,
 })
