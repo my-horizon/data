@@ -155,7 +155,10 @@ int main() {
   // free the memory
   free(ptr07);
 
+  // allocate memory for one 'Phone' struct with multiple items
+  struct Phone *phones = (struct Phone *)malloc(3 * sizeof(struct Phone));
+
   return 0;
 }
 
-// continue with c:deallocate memory
+// continue with c:structs and memory
