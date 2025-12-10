@@ -23,6 +23,12 @@ struct Car {
   int year;
 };
 
+// allocating memory for multiple structs (like an array) is also possible
+struct Phone {
+  char brand[50];
+  int year;
+};
+
 int main() {
 
   // print the used memory sizes of the different functions
